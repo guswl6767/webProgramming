@@ -48,6 +48,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+  function goList(){
+	  
+	  location.href = "list.jsp" // 이동시키기 위해서는 location.href를 무조건 써야함 자바스크립트로 경로를 변경해주는 것
+  }
+</script>
 </head>
 <body>
 <div align="center">
@@ -82,6 +88,8 @@
     </tr>
     
     </table>
+    <br><br>
+    <button onclick="goList()">목  록</button>
    </div>
 </body>
 </html>
