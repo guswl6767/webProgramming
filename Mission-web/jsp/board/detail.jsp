@@ -53,6 +53,13 @@
 	  
 	  location.href = "list.jsp" // 이동시키기 위해서는 location.href를 무조건 써야함 자바스크립트로 경로를 변경해주는 것
   }
+  
+ function goDelete(){
+	  
+	 if(confirm("${param.no}번을 삭제할까요?")){
+	  location.href = "delete.jsp?no=${param.no}" // 이동시키기 위해서는 location.href를 무조건 써야함 자바스크립트로 경로를 변경해주는 것
+  }
+	 }
 </script>
 </head>
 <body>
@@ -90,6 +97,7 @@
     </table>
     <br><br>
     <button onclick="goList()">목  록</button>
+    <button onclick="goDelete()">삭  제</button>
    </div>
 </body>
 </html>
