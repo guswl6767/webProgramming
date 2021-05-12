@@ -11,16 +11,20 @@
            
        2. 추출된 정보를 t_board테이블에 새로운 게시글로 삽입
        3. 목록페이지로 이동
+       
+       
      --%>
      
+<!--        "delete.jsp?no=4" 삭제하려고하는 게시물 번호 추출해야함 -->
+     
      <%
-      int no = Integer.parseInt(request.getParameter("no"));
+      int no = Integer.parseInt(request.getParameter("no"));    /* 삭제하려고 하는 번호 추출 스트링이므로 정수로바꿔줌 */
      
         BoardDAO board = new BoardDAO();
         
         board.deleteBoard(no);
      %>
 <script>
-    alert("삭제 완료하였습니다.")
-    location.href="${pageContext.request.contextPath}/jsp/board/list.jsp"
+    
+    location.href= "list.jsp"
     </script>

@@ -20,6 +20,7 @@
 		    <hr>
 		    <br>
 		    <form action="write.jsp" method="post">   <%-- 서버에 요청할때 post방식으로 전달하는 것이 method --%>
+		      <input type="hidden" name="writer" value="${userVO.id }"> <%--키보드로 입력받지않았지만 submit버튼 눌렀을때 입력받지않은 임의의 정보도 전달하고싶을때 쓰는 것 --%>
 		    <table style="width:100%">
 		       <tr>
 		           <th width="25%">제목</th>
@@ -28,7 +29,8 @@
 		       
 		        <tr>
 		           <th width="25%">작성자</th>
-		           <td><input type="text" name="writer" size="80" required></td>
+		           <td>${userVO.id }</td>
+		           <%-- <td><input type="text" name="writer" size="80" value="${userVO.id }" readonly></td> --%>
 		       </tr>
 		       
 		        <tr>

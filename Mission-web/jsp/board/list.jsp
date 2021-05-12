@@ -37,6 +37,21 @@ pageContext.setAttribute("boardList", board.selectAllBoard() );
 			location.href = "writeForm.jsp"
 		})
 	}) 
+	function goDetail (boardNo) {     // 자바스크립트에서도 core먹힘
+		<c:if test="${empty userVO}">
+		  if(confirm('로그인 서비스가 필요합니다 \n로그인 페이지로 이동할까요?')){
+			  
+			  location.href = "${pageContext.request.contextPath}/jsp/login/login.jsp"
+		  }
+			  
+		</c:if>
+		
+		
+		<c:if test="${not empty userVO}">
+		  
+		 location.href = "detail.jsp?no=" + boardNo
+	     </c:if>
+	}
 	
 </script>
 </head>
@@ -64,8 +79,11 @@ pageContext.setAttribute("boardList", board.selectAllBoard() );
 					<td>${ board.no }</td>
 					<td>
 						<!-- <a href="/Mission-Web/jsp/board/detail.jsp"> -->
-						<a href="detail.jsp?no=${ board.no }">
-							${ board.title }
+						<%-- <a href="detail.jsp?no=${ board.no }"> --%>
+						<%-- <a onclick="goDetail(${ board.no })"> --%> <%-- 게시물 번호를 인자로 넘겨줘야함 --%>
+						 <a href ="javascript:goDetail(${board.no })"> <%-- 자바스크립트 함수쓰고싶을때 자바스크립트 콜론쓰기 --%>
+						
+							<c:out value="${ board.title }"/>  <%-- 태그를 문자열로하기위해 out태그 쓰기 코드로 인식하게하지 않기위해(게시판 제목에 태그 인식안되게하려고) --%>
 						</a></td>
 					<td>${ board.writer }</td>
 					<td>${ board.regDate }</td>
@@ -73,7 +91,9 @@ pageContext.setAttribute("boardList", board.selectAllBoard() );
 			</c:forEach>
 		</table>
 		<br><br>
-		<button id="newBtn">새글등록</button>
+		<c:if test="${not empty userVO }">
+		<button id="newBtn">새글등록</button>   <%-- 새글등록은 로그인 되어있을때만 가능하게하기위해 core if문 넣기 --%>
+		</c:if>
 	</div>
 	</section>
 	<footer>
